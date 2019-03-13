@@ -15,6 +15,9 @@ public class Plane {
     }
 
     public void takeOff(){
+        if(this.flyingStatus == true){
+            throw new IllegalArgumentException("Plane is flying!");
+        }
         this.flyingStatus = true;
     }
 
