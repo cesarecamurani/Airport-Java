@@ -14,4 +14,9 @@ public class Airport {
         this.hangar.add(plane);
         return this.hangar;
     }
+
+    public ArrayList<Plane> clearForTakeOff(Plane plane){
+        this.hangar.remove(plane);
+        return this.hangar;
+    }
 }
