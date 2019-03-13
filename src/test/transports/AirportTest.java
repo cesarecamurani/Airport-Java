@@ -15,7 +15,7 @@ public class AirportTest {
         Airport gatwick = new Airport(hangar);
         Plane boeing = new Plane("Boeing");
         gatwick.clearForLanding(boeing);
-        assertThat(gatwick.hangar, contains(boeing));
+        assertThat(gatwick.hangar, hasItem(boeing));
     }
 
     @Test
