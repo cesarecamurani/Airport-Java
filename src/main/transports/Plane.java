@@ -14,4 +14,8 @@ public class Plane {
         this.flyingStatus = false;
     }
 
+    public void takeOff(){
+        this.flyingStatus = true;
+    }
+
 }

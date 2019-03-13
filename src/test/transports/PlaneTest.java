@@ -14,4 +14,12 @@ public class PlaneTest {
         boeing.land();
         assertEquals(boeing.flyingStatus, false);
     }
+
+    @Test
+    public void takeOffChangeFlyingStatusToTrue(){
+        Plane boeing = new Plane("Boeing");
+        boeing.land();
+        boeing.takeOff();
+        assertEquals(boeing.flyingStatus, true);
+    }
 }
