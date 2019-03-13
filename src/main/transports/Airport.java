@@ -1,14 +1,17 @@
 package transports;
 
-import transports.Plane;
+import java.util.*;
 
 public class Airport {
 
-    public String[] hangar = {};
+    public ArrayList<Plane> hangar;
 
-    public Airport(String[] hangar){
+    public Airport(ArrayList<Plane> hangar){
         this.hangar = hangar;
     }
 
-
+    public ArrayList<Plane> clearForLanding(Plane plane){
+        this.hangar.add(plane);
+        return this.hangar;
+    }
 }

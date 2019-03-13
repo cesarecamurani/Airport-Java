@@ -1,24 +1,22 @@
 package transports;
 
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.Spy;
-import org.mockito.InjectMocks;
+import java.util.ArrayList;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
-
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 public class AirportTest {
 
-
+    private ArrayList<Plane> hangar = new ArrayList<>();
 
     @Test
     public void clearForLandingUnderNormalConditions(){
-        Airport gatwick = new Airport();
+        Airport gatwick = new Airport(hangar);
         Plane boeing = new Plane("Boeing");
-        gatwick.ClearForLanding(boeing);
-        assertThat(gatwick.hangar, hasItem(boeing));
+        gatwick.clearForLanding(boeing);
+        assertThat(gatwick.hangar, contains(boeing));
     }
+
 }
 

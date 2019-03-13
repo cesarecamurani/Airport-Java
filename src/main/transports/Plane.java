@@ -7,4 +7,5 @@ public class Plane {
     public Plane(String planeType){
         this.planeType = planeType;
     }
+
 }
