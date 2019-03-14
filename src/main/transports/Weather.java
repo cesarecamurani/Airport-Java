@@ -7,10 +7,12 @@ public class Weather {
     public Weather(){}
 
     String[] conditions = { "Stormy", "Sunny", "Sunny" };
+    String currentWeather;
     Random rand = new Random();
 
     String getWeatherConditions(){
-        return conditions[rand.nextInt(conditions.length)];
+        currentWeather = conditions[rand.nextInt(conditions.length)];
+        return currentWeather;
     }
 }
 
