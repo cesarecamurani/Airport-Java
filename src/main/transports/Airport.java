@@ -6,18 +6,16 @@ public class Airport {
 
     ArrayList<Plane> hangar;
 
-    public Airport(ArrayList<Plane> hangar){
+    Airport(ArrayList<Plane> hangar){
         this.hangar = hangar;
     }
 
-    ArrayList<Plane> clearForLanding(Plane plane){
+    void clearForLanding(Plane plane){
         hangar.add(plane);
-        return hangar;
     }
 
-    ArrayList<Plane> clearForTakeOff(Plane plane){
+    void clearForTakeOff(Plane plane){
         hangar.remove(plane);
-        return hangar;
     }
 
     public static void main(String...args){

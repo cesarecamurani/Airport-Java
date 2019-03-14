@@ -6,14 +6,12 @@ public class Weather {
 
     public Weather(){}
 
-    private String[] conditions = new String[]{ "Stormy", "Sunny", "Sunny" };
-    private Random rand = new Random();
+    String[] conditions = { "Stormy", "Sunny", "Sunny" };
+    Random rand = new Random();
 
-    public String getWeatherConditions(){
+    String getWeatherConditions(){
         return conditions[rand.nextInt(conditions.length)];
     }
-
-
 }
 
 

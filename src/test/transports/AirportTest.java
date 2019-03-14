@@ -6,31 +6,33 @@ import java.util.ArrayList;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AirportTest {
 
     private ArrayList<Plane> hangar = new ArrayList<>();
     private Plane boeing;
-    private Airport gatwick;
+    private Airport gatwick = new Airport(hangar);
 
     @Before
     public void setUp(){
-        gatwick = new Airport(hangar);
         boeing = new Plane("Boeing");
     }
 
     @Test
     public void clearForLandingUnderNormalConditions(){
         gatwick.clearForLanding(boeing);
-        assertThat(gatwick.hangar, hasItem(boeing));
+        assertThat("Hangar contains boeing", gatwick.hangar, hasItem(boeing));
     }
 
     @Test
     public void clearForTakeOffUnderNormalConditions(){
         gatwick.clearForLanding(boeing);
         gatwick.clearForTakeOff(boeing);
-        assertThat(gatwick.hangar, not(hasItem(boeing)));
+        assertThat("Hangar doesn't contains boeing", gatwick.hangar, not(hasItem(boeing)));
     }
 
 }
+
+
 
