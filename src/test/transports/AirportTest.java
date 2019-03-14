@@ -1,5 +1,6 @@
 package transports;
 
+import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;
 
@@ -9,19 +10,23 @@ import static org.junit.Assert.assertThat;
 public class AirportTest {
 
     private ArrayList<Plane> hangar = new ArrayList<>();
+    private Plane boeing;
+    private Airport gatwick;
+
+    @Before
+    public void setUp(){
+        gatwick = new Airport(hangar);
+        boeing = new Plane("Boeing");
+    }
 
     @Test
     public void clearForLandingUnderNormalConditions(){
-        Airport gatwick = new Airport(hangar);
-        Plane boeing = new Plane("Boeing");
         gatwick.clearForLanding(boeing);
         assertThat(gatwick.hangar, hasItem(boeing));
     }
 
     @Test
     public void clearForTakeOffUnderNormalConditions(){
-        Airport gatwick = new Airport(hangar);
-        Plane boeing = new Plane("Boeing");
         gatwick.clearForLanding(boeing);
         gatwick.clearForTakeOff(boeing);
         assertThat(gatwick.hangar, not(hasItem(boeing)));
