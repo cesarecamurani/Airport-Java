@@ -1,21 +1,21 @@
 package transports;
 
-public class Plane {
+class Plane {
 
-    public String planeType;
-    public boolean flyingStatus;
+    String planeType;
+    boolean flyingStatus;
 
-    public Plane(String planeType){
+    Plane(String planeType){
         this.planeType = planeType;
         this.flyingStatus = true;
     }
 
-    public void land(){
+    void land(){
         this.flyingStatus = false;
     }
 
-    public void takeOff(){
-        if(this.flyingStatus == true){
+    void takeOff(){
+        if(this.flyingStatus){
             throw new IllegalArgumentException("Plane is flying!");
         }
         this.flyingStatus = true;

@@ -1,7 +1,6 @@
 package transports;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -20,14 +19,14 @@ public class PlaneTest {
     @Test
     public void landChangeFlyingStatusToFalse(){
         boeing.land();
-        assertEquals(boeing.flyingStatus, false);
+        assertFalse(boeing.flyingStatus);
     }
 
     @Test
     public void takeOffChangeFlyingStatusToTrue(){
         boeing.land();
         boeing.takeOff();
-        assertEquals(boeing.flyingStatus, true);
+        assertTrue(boeing.flyingStatus);
     }
 
     @Test

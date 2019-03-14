@@ -4,19 +4,27 @@ import java.util.*;
 
 public class Airport {
 
-    public ArrayList<Plane> hangar;
+    ArrayList<Plane> hangar;
 
     public Airport(ArrayList<Plane> hangar){
         this.hangar = hangar;
     }
 
-    public ArrayList<Plane> clearForLanding(Plane plane){
-        this.hangar.add(plane);
-        return this.hangar;
+    ArrayList<Plane> clearForLanding(Plane plane){
+        hangar.add(plane);
+        return hangar;
     }
 
-    public ArrayList<Plane> clearForTakeOff(Plane plane){
-        this.hangar.remove(plane);
-        return this.hangar;
+    ArrayList<Plane> clearForTakeOff(Plane plane){
+        hangar.remove(plane);
+        return hangar;
+    }
+
+    public static void main(String...args){
+        ArrayList<Plane> hangar = new ArrayList<>();
+        var boeing = new Plane("boeing");
+        var heathrow = new Airport(hangar);
+        heathrow.clearForLanding(boeing);
+        heathrow.clearForTakeOff(boeing);
     }
 }
