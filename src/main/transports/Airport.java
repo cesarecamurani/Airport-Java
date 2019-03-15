@@ -5,6 +5,8 @@ import java.util.*;
 public class Airport {
 
     ArrayList<Plane> hangar;
+    String currentWeather = "Sunny";
+    Weather today = new Weather(currentWeather);
     int capacity;
 
     Airport(ArrayList<Plane> hangar){
@@ -17,14 +19,24 @@ public class Airport {
     }
 
     void clearForLanding(Plane plane){
+        if(today.currentWeather.equals("Stormy")){
+            throw new Error("Cannot land if Stormy!");
+        }
         if(hangar.size() >= capacity) {
             throw new Error("Airport is full!");
-        } else {
-            hangar.add(plane);
         }
+        plane.land();
+        hangar.add(plane);
     }
 
     void clearForTakeOff(Plane plane){
+        if(today.currentWeather.equals("Stormy")){
+            throw new Error("Cannot takeoff if Stormy!");
+        }
+        if(!hangar.contains(plane)) {
+            throw new Error("Plane not present!");
+        }
+        plane.takeOff();
         hangar.remove(plane);
     }
 
@@ -32,6 +44,7 @@ public class Airport {
         ArrayList<Plane> hangar = new ArrayList<>();
         var boeing = new Plane("boeing");
         var heathrow = new Airport(hangar);
+        heathrow.changeCapacity(15);
         heathrow.clearForLanding(boeing);
         heathrow.clearForTakeOff(boeing);
     }

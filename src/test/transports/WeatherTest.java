@@ -12,11 +12,12 @@ import static org.junit.Assert.*;
 public class WeatherTest {
 
     private Weather today;
+    private String currentWeather;
     private String[] conditions = { "Stormy", "Sunny", "Sunny" };
 
     @Before
     public void setUp(){
-        today = new Weather();
+        today = new Weather(currentWeather);
     }
 
 //    @Test

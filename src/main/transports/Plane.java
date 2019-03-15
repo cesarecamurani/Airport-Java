@@ -16,7 +16,7 @@ class Plane {
 
     void takeOff(){
         if(this.flyingStatus){
-            throw new IllegalArgumentException("Plane is flying!");
+            throw new Error("Plane is flying!");
         }
         this.flyingStatus = true;
     }

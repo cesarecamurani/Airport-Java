@@ -1,7 +1,6 @@
 package transports;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import java.util.ArrayList;
 
 import static org.hamcrest.Matchers.*;
@@ -11,8 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class AirportTest {
 
     private ArrayList<Plane> hangar = new ArrayList<>();
+    private String currentWeather = new String();
     private Plane boeing;
     private Airport gatwick = new Airport(hangar);
+    private Weather today = new Weather(currentWeather);
 
     @Before
     public void setUp(){
@@ -27,12 +28,14 @@ public class AirportTest {
 
     @Test
     public void clearForLandingUnderNormalConditions(){
+        today.currentWeather = "Sunny";
         gatwick.clearForLanding(boeing);
         assertThat("Hangar contains boeing", gatwick.hangar, hasItem(boeing));
     }
 
     @Test
     public void clearForTakeOffUnderNormalConditions(){
+        today.currentWeather = "Sunny";
         gatwick.clearForLanding(boeing);
         gatwick.clearForTakeOff(boeing);
         assertThat("Hangar doesn't contains boeing", gatwick.hangar, not(hasItem(boeing)));
@@ -44,6 +47,14 @@ public class AirportTest {
             gatwick.clearForLanding(boeing);
         }
         assertThrows(Error.class, () -> gatwick.clearForLanding(boeing));
+    }
+
+    @Test(expected=Error.class)
+    public void cannotTakeOffIfPlaneNotInHangar() {
+        gatwick.clearForLanding(boeing);
+        gatwick.clearForTakeOff(boeing);
+        gatwick.clearForTakeOff(boeing);
+        assertThrows(Error.class, () -> gatwick.clearForTakeOff(boeing));
     }
 
 }

@@ -27,9 +27,12 @@ public class PlaneTest {
         assertTrue("Flying Status is true", boeing.flyingStatus);
     }
 
-    @Test
+    @Test(expected=Error.class)
     public void cannotTakeOffIfFlying() {
-        assertThrows(IllegalArgumentException.class, () -> boeing.takeOff());
+        boeing.land();
+        boeing.takeOff();
+        boeing.takeOff();
+        assertThrows(Error.class, () -> boeing.takeOff());
     }
 }
 
