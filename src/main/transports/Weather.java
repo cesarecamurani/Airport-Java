@@ -7,7 +7,7 @@ public class Weather {
     String[] conditions = { "Stormy", "Sunny", "Sunny" };
     String currentWeather;
 
-    public Weather(String currentWeather){
+    Weather(String currentWeather){
         this.currentWeather = currentWeather;
     }
 
