@@ -9,14 +9,18 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AirportTest {
 
-    private ArrayList<Plane> hangar = new ArrayList<>();
-    private String currentWeather = new String();
+    private ArrayList<Plane> hangar;
+    private Airport gatwick;
+    private String currentWeather;
+    private Weather today;
     private Plane boeing;
-    private Airport gatwick = new Airport(hangar);
-    private Weather today = new Weather(currentWeather);
 
     @Before
     public void setUp(){
+        hangar = new ArrayList<>();
+        gatwick = new Airport(hangar);
+        currentWeather = "";
+        today = new Weather(currentWeather);
         boeing = new Plane("Boeing");
     }
 
@@ -39,6 +43,20 @@ public class AirportTest {
         gatwick.clearForLanding(boeing);
         gatwick.clearForTakeOff(boeing);
         assertThat("Hangar doesn't contains boeing", gatwick.hangar, not(hasItem(boeing)));
+    }
+
+    @Test(expected=Error.class)
+    public void cannotClearForLandingWhenStormy(){
+        today.currentWeather = "Stormy";
+        gatwick.clearForLanding(boeing);
+        assertThrows(Error.class, () -> gatwick.clearForLanding(boeing));
+    }
+
+    @Test(expected=Error.class)
+    public void cannotClearForTakeOffWhenStormy() {
+        today.currentWeather = "Stormy";
+        gatwick.clearForTakeOff(boeing);
+        assertThrows(Error.class, () -> gatwick.clearForTakeOff(boeing));
     }
 
     @Test(expected=Error.class)
