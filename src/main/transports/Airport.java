@@ -12,6 +12,10 @@ public class Airport {
         this.capacity = 10;
     }
 
+    void changeCapacity(int capacity){
+        this.capacity = capacity;
+    }
+
     void clearForLanding(Plane plane){
         if(hangar.size() >= capacity) {
             throw new Error("Airport is full!");
