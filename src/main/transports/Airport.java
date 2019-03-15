@@ -5,13 +5,19 @@ import java.util.*;
 public class Airport {
 
     ArrayList<Plane> hangar;
+    int capacity;
 
     Airport(ArrayList<Plane> hangar){
         this.hangar = hangar;
+        this.capacity = 10;
     }
 
     void clearForLanding(Plane plane){
-        hangar.add(plane);
+        if(hangar.size() >= capacity) {
+            throw new Error("Airport is full!");
+        } else {
+            hangar.add(plane);
+        }
     }
 
     void clearForTakeOff(Plane plane){

@@ -19,17 +19,17 @@ public class WeatherTest {
         today = new Weather();
     }
 
-    @Test
-    public void shouldReturnStormyCondition(){
-        today.getWeatherConditions();
-        assertEquals(today.currentWeather, "Stormy");
-    }
-
-    @Test
-    public void shouldReturnSunnyCondition(){
-        today.getWeatherConditions();
-        assertEquals(today.currentWeather, "Sunny");
-    }
+//    @Test
+//    public void shouldReturnStormyCondition(){
+//        today.getWeatherConditions();
+//        assertEquals(today.currentWeather, "Stormy");
+//    }
+//
+//    @Test
+//    public void shouldReturnSunnyCondition(){
+//        today.getWeatherConditions();
+//        assertEquals(today.currentWeather, "Sunny");
+//    }
 
 }
 
