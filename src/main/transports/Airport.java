@@ -40,12 +40,4 @@ public class Airport {
         hangar.remove(plane);
     }
 
-    public static void main(String...args){
-        ArrayList<Plane> hangar = new ArrayList<>();
-        var boeing = new Plane("boeing");
-        var heathrow = new Airport(hangar);
-        heathrow.changeCapacity(15);
-        heathrow.clearForLanding(boeing);
-        heathrow.clearForTakeOff(boeing);
-    }
 }
