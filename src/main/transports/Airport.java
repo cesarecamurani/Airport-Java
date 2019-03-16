@@ -20,11 +20,11 @@ public class Airport {
         if(today.currentWeather.equals("Stormy")){
             throw new Error("Cannot land if Stormy!");
         }
-        if(hangar.size() >= capacity) {
-            throw new Error("Airport is full!");
-        }
         if(hangar.contains(plane)) {
             throw new Error("Plane has already landed!");
+        }
+        if(hangar.size() >= capacity) {
+            throw new Error("Airport is full!");
         }
         plane.land();
         hangar.add(plane);

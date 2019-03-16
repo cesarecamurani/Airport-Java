@@ -78,5 +78,20 @@ public class FeatureTest {
         assertThrows(Error.class, () -> gatwick.clearForLanding(boeing, today));
     }
 
+    @Test(expected=Error.class)
+    public void featureTestPlaneCannotLandIfAirportIsFull() {
+        today.getWeatherConditions(twoRand);
+        gatwick.changeCapacity(5);
+        gatwick.clearForLanding(boeing, today);
+        gatwick.clearForLanding(boeing, today);
+        gatwick.clearForLanding(boeing, today);
+        gatwick.clearForLanding(boeing, today);
+        gatwick.clearForLanding(boeing, today);
+        gatwick.clearForLanding(boeing, today);
+        assertThrows(Error.class, () -> gatwick.clearForLanding(boeing, today));
+    }
+
+
+
 
 }
