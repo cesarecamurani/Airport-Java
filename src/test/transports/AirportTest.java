@@ -54,6 +54,13 @@ public class AirportTest {
     }
 
     @Test(expected=Error.class)
+    public void cannotClearForLandingIfPlaneHasAlreadyLanded(){
+        gatwick.clearForLanding(boeing, today);
+        gatwick.clearForLanding(boeing, today);
+        assertThrows(Error.class, () -> gatwick.clearForLanding(boeing, today));
+    }
+
+    @Test(expected=Error.class)
     public void cannotClearForTakeOffWhenStormy() {
         today.currentWeather = "Stormy";
         gatwick.clearForTakeOff(boeing, today);

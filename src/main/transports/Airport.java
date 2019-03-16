@@ -23,6 +23,9 @@ public class Airport {
         if(hangar.size() >= capacity) {
             throw new Error("Airport is full!");
         }
+        if(hangar.contains(plane)) {
+            throw new Error("Plane has already landed!");
+        }
         plane.land();
         hangar.add(plane);
         System.out.println("We landed safely!");
