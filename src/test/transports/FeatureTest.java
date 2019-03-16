@@ -60,4 +60,15 @@ public class FeatureTest {
         gatwick.clearForTakeOff(boeing, today);
         assertThrows(Error.class, () -> gatwick.clearForTakeOff(boeing, today));
     }
+
+    @Test(expected=Error.class)
+    public void featureTestPlaneCannotTakeOffIfNotInHangar() {
+        today.getWeatherConditions(twoRand);
+        gatwick.clearForLanding(boeing, today);
+        gatwick.clearForTakeOff(boeing, today);
+        gatwick.clearForTakeOff(boeing, today);
+        assertThrows(Error.class, () -> gatwick.clearForTakeOff(boeing, today));
+    }
+
+
 }
