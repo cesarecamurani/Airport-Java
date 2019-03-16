@@ -45,4 +45,19 @@ public class FeatureTest {
         gatwick.clearForTakeOff(boeing, today);
         assertThat("Hangar doesn't contains boeing", gatwick.hangar, not(hasItem(boeing)));
     }
+
+    @Test(expected=Error.class)
+    public void featureTestPlaneCannotLandBecauseStormy() {
+        today.getWeatherConditions(oneRand);
+        gatwick.clearForLanding(boeing, today);
+        assertThrows(Error.class, () -> gatwick.clearForLanding(boeing, today));
+    }
+
+    @Test(expected=Error.class)
+    public void featureTestPlaneCannotTakeOffBecauseStormy() {
+        today.getWeatherConditions(oneRand);
+        gatwick.clearForLanding(boeing, today);
+        gatwick.clearForTakeOff(boeing, today);
+        assertThrows(Error.class, () -> gatwick.clearForTakeOff(boeing, today));
+    }
 }
